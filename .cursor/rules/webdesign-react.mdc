@@ -1,0 +1,30 @@
+---
+description: Règles pour les projets React design dans ce dépôt
+globs:
+  - design/**/*
+---
+
+# Webdesign — React + shadcn
+
+Avant de coder, lire `docs/MEMORY.md` et `docs/CONVENTIONS.md`.
+
+## Obligatoire
+
+- Stack : Vite + React + TypeScript + Tailwind v4 + shadcn/ui.
+- **Aucune classe CSS custom** dans les composants ; Tailwind + tokens shadcn uniquement.
+- Ajouter les composants UI via `npx shadcn@latest add <component>`.
+- Textes français dans `src/data/`.
+- Respecter `prefers-reduced-motion` pour Framer Motion.
+
+## Structure type
+
+```
+design/<projet>/src/
+  components/{layout,sections,motion,ui}
+  data/
+  hooks/
+```
+
+## Après livraison
+
+Mettre à jour `docs/MEMORY.md` avec contexte, décision et leçons réutilisables.
