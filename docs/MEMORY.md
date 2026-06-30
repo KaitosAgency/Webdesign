@@ -29,7 +29,19 @@
 - **Décision** : `git config --local user.name` / `user.email` pour KaitosAgency dans ce repo.
 - **À réutiliser** : l'attribution GitHub dépend de l'e-mail du commit, pas du remote.
 
-## Comment enrichir
+### [2026-06-30] Decklist Finder (magic.gg)
+
+- **Contexte** : page de recherche de cartes dans les decklists publiées sur magic.gg (mises à jour hebdomadaires + événements).
+- **Décision** :
+  - Projet `design/decklist-search` : Vite + React + shadcn, API via plugin Vite (`server/api-plugin.ts`).
+  - Source : API Contentful publique de magic.gg (`decklistArticle`, ~704 publications).
+  - Parsing des balises custom `<deck-list>`, `<main-deck>`, `<side-board>`, `<companion-card>`.
+  - Cache mémoire 1 h côté serveur pour limiter les appels Contentful.
+- **À réutiliser** :
+  - Pagination Contentful : `limit=100`, boucle sur `skip` jusqu’à `total`.
+  - `configurePreviewServer` en plus de `configureServer` pour que l’API marche en `vite preview`.
+  - Certains articles ont `decklistBody` en string, pas seulement en tableau.
+
 
 1. Ajouter une section `### [date] Titre` en haut de la liste « Entrées ».
 2. Résumer en 3 puces : Contexte, Décision, À réutiliser.
